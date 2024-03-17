@@ -16,7 +16,7 @@ actual class Platform(){
         get() = round(Resources.getSystem().displayMetrics.density).toInt()
 
     actual fun logSystemInfo() {
-        Log.d("KMP NewsFlow", "($osName, $osVersion, $deviceModel, $density)")
+        Log.d("NewsFlow", "($osName, $osVersion, $deviceModel, $density)")
     }
 
 }

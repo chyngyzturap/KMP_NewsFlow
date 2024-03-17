@@ -1,5 +1,6 @@
-package com.pharos.kmpnewsflow.articles
+package com.pharos.kmpnewsflow.articles.data
 
+import com.pharos.kmpnewsflow.articles.data.ArticleRaw
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

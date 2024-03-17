@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.pharos.kmpnewsflow.android.screens.AboutScreen
 import com.pharos.kmpnewsflow.android.screens.ArticlesScreen
 import com.pharos.kmpnewsflow.android.screens.Screen
-import com.pharos.kmpnewsflow.articles.ArticlesViewModel
+import com.pharos.kmpnewsflow.articles.presentation.ArticlesViewModel
 
 @Composable
 fun ApplicationScaffold() {

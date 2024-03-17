@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version ("0.6.1")
     kotlin("plugin.serialization") version "1.9.20"
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -33,6 +34,7 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+            implementation(libs.sql.coroutines.extensions)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -40,9 +42,11 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
             implementation(libs.ktor.client.android)
+            implementation(libs.sql.android.driver)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sql.native.driver)
         }
     }
 }
@@ -55,5 +59,13 @@ android {
     }
     packaging {
         resources.excludes.add("META-INF/versions/**")
+    }
+}
+
+sqldelight {
+    databases {
+        create(name = "NewsFlowDatabase") {
+            packageName.set("com.pharos.kmpnewsflow.db")
+        }
     }
 }

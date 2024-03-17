@@ -1,12 +1,12 @@
 package com.pharos.kmpnewsflow.di
 
-import com.pharos.kmpnewsflow.articles.ArticlesViewModel
+import com.pharos.kmpnewsflow.articles.presentation.ArticlesViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 
 fun initKoin() {
-    val modules = sharedKoinModules
+    val modules = sharedKoinModules + databaseModule
 
     startKoin {
         modules(modules)

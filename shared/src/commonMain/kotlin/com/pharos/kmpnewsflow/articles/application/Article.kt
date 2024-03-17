@@ -1,4 +1,4 @@
-package com.pharos.kmpnewsflow.articles
+package com.pharos.kmpnewsflow.articles.application
 
 data class Article (
     val title: String,

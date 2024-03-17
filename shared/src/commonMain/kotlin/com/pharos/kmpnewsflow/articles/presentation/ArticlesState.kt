@@ -1,4 +1,6 @@
-package com.pharos.kmpnewsflow.articles
+package com.pharos.kmpnewsflow.articles.presentation
+
+import com.pharos.kmpnewsflow.articles.application.Article
 
 data class ArticlesState (
     val articles: List<Article> = listOf(),

@@ -1,12 +1,13 @@
 package com.pharos.kmpnewsflow.android
 
 import android.app.Application
+import com.pharos.kmpnewsflow.android.di.databaseModule
 import com.pharos.kmpnewsflow.android.di.viewModelsModule
 import com.pharos.kmpnewsflow.di.sharedKoinModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class KMPNewsFlowApplication: Application() {
+class NewsFlowApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -14,10 +15,10 @@ class KMPNewsFlowApplication: Application() {
     }
 
     private fun initKoin() {
-        val modules = sharedKoinModules + viewModelsModule
+        val modules = sharedKoinModules + viewModelsModule + databaseModule
 
         startKoin {
-            androidContext(this@KMPNewsFlowApplication)
+            androidContext(this@NewsFlowApplication)
             modules(modules)
         }
     }

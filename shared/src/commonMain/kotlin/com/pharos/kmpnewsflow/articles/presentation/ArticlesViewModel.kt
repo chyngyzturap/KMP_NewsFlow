@@ -1,14 +1,10 @@
-package com.pharos.kmpnewsflow.articles
+package com.pharos.kmpnewsflow.articles.presentation
 
 import com.pharos.kmpnewsflow.BaseViewModel
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.delay
+import com.pharos.kmpnewsflow.articles.application.ArticlesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 class ArticlesViewModel(
     private val useCase: ArticlesUseCase
@@ -21,9 +17,12 @@ class ArticlesViewModel(
         getArticles()
     }
 
-    private fun getArticles(){
+    fun getArticles(isForceRefresh: Boolean = false){
         scope.launch {
-            val fetchedArticles = useCase.getArticles()
+            _articlesState.emit(ArticlesState(loading = true, articles = _articlesState.value.articles))
+
+            val fetchedArticles = useCase.getArticles(isForceRefresh)
+
             _articlesState.emit(ArticlesState(articles = fetchedArticles))
         }
     }

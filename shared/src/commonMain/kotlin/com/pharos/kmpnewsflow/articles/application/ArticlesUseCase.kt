@@ -1,5 +1,7 @@
-package com.pharos.kmpnewsflow.articles
+package com.pharos.kmpnewsflow.articles.application
 
+import com.pharos.kmpnewsflow.articles.data.ArticleRaw
+import com.pharos.kmpnewsflow.articles.data.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -8,14 +10,14 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase (private val articlesService: ArticlesService) {
+class ArticlesUseCase (private val repository: ArticlesRepository) {
 
-    suspend fun getArticles(): List<Article>{
-        val articleRaw = articlesService.fetchArticles()
+    suspend fun getArticles(isForceRefresh: Boolean): List<Article>{
+        val articleRaw = repository.getArticles(isForceRefresh)
         return mapArticles(articleRaw)
     }
 
-    private fun mapArticles(articleRaw: List<ArticleRaw>): List<Article> = articleRaw.map {raw ->
+    private fun mapArticles(articleRaw: List<ArticleRaw>): List<Article> = articleRaw.map { raw ->
         Article(
             raw.title,
             raw.description ?: "Click to find out more",
