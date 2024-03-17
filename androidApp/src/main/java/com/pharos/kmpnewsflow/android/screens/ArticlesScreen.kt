@@ -31,12 +31,13 @@ import androidx.compose.ui.unit.sp
 import com.pharos.kmpnewsflow.articles.Article
 import com.pharos.kmpnewsflow.articles.ArticlesViewModel
 import coil.compose.AsyncImage
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
 fun ArticlesScreen(
     onAboutButtonClick: () -> Unit,
-    articlesViewModel: ArticlesViewModel
+    articlesViewModel: ArticlesViewModel = getViewModel()
 ) {
     val articlesState = articlesViewModel.articlesState.collectAsState()
 

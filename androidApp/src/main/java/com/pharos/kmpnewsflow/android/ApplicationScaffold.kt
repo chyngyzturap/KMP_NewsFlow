@@ -15,7 +15,7 @@ import com.pharos.kmpnewsflow.android.screens.Screen
 import com.pharos.kmpnewsflow.articles.ArticlesViewModel
 
 @Composable
-fun ApplicationScaffold(articlesViewModel: ArticlesViewModel) {
+fun ApplicationScaffold() {
     val navController = rememberNavController()
 
     Scaffold {
@@ -24,7 +24,6 @@ fun ApplicationScaffold(articlesViewModel: ArticlesViewModel) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it),
-            articlesViewModel
         )
     }
 }
@@ -33,7 +32,6 @@ fun ApplicationScaffold(articlesViewModel: ArticlesViewModel) {
 fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    articlesViewModel: ArticlesViewModel
 ) {
     NavHost(
         navController = navController,
@@ -43,7 +41,6 @@ fun AppNavHost(
         composable(Screen.ARTICLES.route) {
             ArticlesScreen(
                 onAboutButtonClick = { navController.navigate(Screen.ABOUT_DEVICE.route) },
-                articlesViewModel = articlesViewModel
             )
         }
         composable(Screen.ABOUT_DEVICE.route) {

@@ -15,15 +15,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val articlesViewModel: ArticlesViewModel by viewModels()
-
         setContent {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ApplicationScaffold(articlesViewModel = articlesViewModel)
+                    ApplicationScaffold()
                 }
             }
         }
@@ -35,6 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        ApplicationScaffold(articlesViewModel = ArticlesViewModel())
+        ApplicationScaffold()
     }
 }
